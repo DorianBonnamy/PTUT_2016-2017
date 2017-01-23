@@ -6,10 +6,33 @@
 
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
+
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
 
 $app = new Silex\Application();
+$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
-$app->get('/', 'DUT\\Controllers\\ItemsController::example');
+$app['connection'] = [
+    'driver' => 'pdo_mysql',
+    'host' => 'localhost',
+    'user' => 'root',
+    'password' => '',
+    'dbname' => 'articles'
+];
 
+
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => __DIR__.'/../views',
+));
+$app['doctrine_config'] = Setup::createYAMLMetadataConfiguration([__DIR__ . '/../config'], true);
+$app['em'] = function ($app) {
+    return EntityManager::create($app['connection'], $app['doctrine_config']);
+};
+
+$app->get('/', 'DUT\\Controllers\\ItemsController::indexAction');
+
+$app->register(new Silex\Provider\TwigServiceProvider(), ['twig.path' => __DIR__.'/../views',]);
+$app['debug'] = true;
 $app->run();

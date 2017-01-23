@@ -1,0 +1,55 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+
+
+			<div class="container col-md-12">
+				<div class="form-group col-lg-3"></div>
+				<div class="form-group col-lg-6 img-thumbnail"  id="article">
+					<h1><center><b>{{ article.getTitre() }}</b></center></h1>
+					<img src={{ article.getImage() }} alt="Picture" class="img-thumbnail col-lg-12" width=auto height=auto style="margin-left: auto;
+  margin-right: auto; width="100%">
+					<br>
+					<h4><center>{{ article.getTexte() }}</center></h4>
+					<div class="form-group col-lg-5"></div>
+					<div class="form-group col-lg-4">
+						<form method="post" action={{ app.url_generator.generate('POST_comments_index', {'index':article.getId()}) }}>
+							<button class="btn">Post comment</button>
+						</form>
+					</div>
+
+					<div class="form-group col-lg-1"></div>
+
+					<a class ="btn btn-danger" href={{ app.url_generator.generate('GET_remove_index', {'index':article.getId()}) }}>supprimer </a>
+
+
+
+				Comment.getPseudo();
+				Comment.getTexteCom();
+
+
+
+
+
+	<form method="post" action={{ app.url_generator.generate('POST_comments_index', {'index':article.getId()}) }}>
+
+
+			<div class="container col-lg-12">
+				<div class="form-group">
+					<label for="input-default">Email address:</label>
+					<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Pseudo">
+				</div>
+
+				<br />
+				<div class="form-group">
+					<label for="text">Entrez votre commentaire</label>
+					<textarea class="form-control" id="contenu_com" name="contenu_com" placeholder="Commentaire"></textarea>
+				</div>
+
+		<button class ="btn btn-success">Valid</button>
+
+		</div>
+	</form>
+			</div>
+	</div>
+{% endblock %}

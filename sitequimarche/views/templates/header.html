@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .header{
+        background-color: #333333;
+        padding-left: 20px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+    .body{
+        background-color: #999999;
+    }
+    .footer{
+        background-color: #333333;
+        margin-top: 15px;
+        color:#BBBBBB;
+    }
+    #wrap{
+        min-height: 100%;
+    }
+    #footer{
+        clear: both;
+        position: relative;
+        z-index: 10;
+        height: 150px;
+        margin-top: -150px;
+    }
+    .site-name {
+        color: #880000;
+        font-family: "Microsoft YaHei Light";
+        font-size: 60px;
+    }
+    .btn{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+    .area-text{
+        background-color: #FFFFFF;
+    }
+
+</style>
+<body class="body">
+<div class="header col-md-12">
+    <div class="col-md-1">
+        <a href={{ app.url_generator.generate('GET_') }}>
+            <img src="http://i.imgur.com/7DCmEiJ.png" alt="dog" height="100">
+        </a>
+    </div>
+    <div class="col-md-6">
+        <h1 class="site-name">My Blog</h1>
+    </div>
+
+</div>
+<div id="wrap">

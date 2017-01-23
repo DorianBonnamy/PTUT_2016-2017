@@ -1,0 +1,47 @@
+{% extends "layout.twig" %}
+
+{% block body %}
+    {% include 'templates/header.html' %}
+
+	<div class="container col-md-12">
+		<div class="col=md=12">
+			<center><h1>Articles</h1></center>
+		</div>
+		<form method="post" action={{ app.url_generator.generate('POST_create') }}>
+			<div id="sample">
+				<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
+					bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+				</script>
+
+
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+					<h4>Entrez un titre	</h4>
+					<div class="area-text">
+					<textarea name="titre_art" style="width: 100%" ></textarea>
+					</div>
+
+					<h4>Entrez l'url d'une image</h4>
+					<div class="area-text">
+					<textarea name="image" style="width: 100%">
+					</textarea>
+					</div>
+
+					<h4>Entrez du contenu</h4>
+					<div class="area-text">
+					<textarea name="contenu_art" style="width: 100%;">
+					</textarea>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3"></div>
+				<div class="col-md-6">
+				<button class ="btn btn-success">Post</button>
+				</div>
+			</div>
+		</form>
+	</div>
+    {% include 'templates/footer.html' %}
+{% endblock %}

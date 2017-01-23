@@ -1,0 +1,30 @@
+DUT\Models\Comment:
+  type: entity
+  table: comments
+
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: auto
+
+  fields:
+    id_article:
+      type: integer
+      column: id_article
+      nullable: false
+
+    pseudo:
+      type: string
+      column: pseudo
+      nullable: false
+      
+    texte_com:
+      type: string
+      column: texte_com
+      nullable: false
+
+    date:
+      type: string
+      column: date
+      nullable: false
